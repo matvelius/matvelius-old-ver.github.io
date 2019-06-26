@@ -1,6 +1,52 @@
-/* body {
-    font-size: 40;
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+
+    background-color: rgb(243, 243, 243);
+
+    -webkit-animation: fadein 3s;
+       -moz-animation: fadein 3s;
+        -ms-animation: fadein 3s;
+         -o-animation: fadein 3s;
+            animation: fadein 3s;
+}
+
+body {
+    font-family: 'Jura', sans-serif;
+    /* font-size: 40; */
     text-align: center;
-    text-transform: capitalize;
-    color: blue;
-} */
+    /* color: blue; */
+}
+
+h1, h2, h3 {
+    
+}
+
+h1, h2 {
+    text-transform: uppercase;
+}
+
+h1 {
+    font-size: 55;
+    color: rgb(19, 19, 19);
+    margin: 0.7rem;
+}
+
+h2 {
+    font-size: 35;
+    color: rgb(68, 68, 68);
+    margin: 0.5rem;
+    
+}
+
+h3 {
+    font-size: 28;
+    color: rgb(87, 87, 87);
+}
