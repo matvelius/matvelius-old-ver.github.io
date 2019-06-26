@@ -1,1 +1,4 @@
 theme: jekyll-theme-minimal
+
+url: matvelius.github.io
+   baseurl: /gh-pages
