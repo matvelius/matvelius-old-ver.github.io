@@ -6,6 +6,14 @@
 
         <link rel="stylesheet" href="style.css">
 
+        <!-- <link rel="stylesheet" href="prism.css">
+        
+        <script src="prism.js"></script> -->
+
+        <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+
+        <script src="https://raw.githubusercontent.com/google/code-prettify/master/src/lang-swift.js"></script>
+
         <!-- <link rel="shortcut icon" type="image/png" href="https://gemrover.a2hosted.com/ebay/logo-icon.png"> -->
     
         <link href="https://fonts.googleapis.com/css?family=Jura&display=swap" rel="stylesheet">
@@ -22,6 +30,84 @@
                     <li><a href="https://github.com/matvelius" target="_blank">Github</a></li>
                     <li><a href="mailto:matveycodes@gmail.com">Email</a></li>
                 </ul>
+            </div>
+        </div>
+
+        <h2 id="projects_title">PROJECTS:</h2>
+
+        <div class="projects_section">
+            
+            <div class="project project1">
+                <div class="project_title">
+                    Piano Notes Trainer
+                </div>
+                <div class="project_subtitle">
+                    iOS: Swift/Xcode, AVFoundation; Sketch
+                </div>
+                <div class="project_description">
+                    <div class="subsection">
+                        <span class="text">
+                            The Piano Notes Trainer app is designed to supplement piano lessons and help students learn to find and recognize notes on the piano as well as the musical staff. 
+                            <br><br>
+                            Piano Notes Trainer includes a LEARN section and an interactive PLAY SECTION.
+                            <br><br>
+                            The LEARN section consists of slides that introduce the student to the piano keyboard, as well as basic music theory and the fundamentals of music notation.
+                            <br><br>
+                            The PLAY section allows the students to practice their note-naming and note-finding skills in a game-like manner. The goal is to get the answers right consistently (just like a real piece of music would require) in order to earn points, stars, and pass levels.
+                            <br><br>
+                            There is a FREEPLAY section designed for teachers, parents, and more advanced students who need to customize the training session. If you are just starting out, we recommend going through the levels first.
+                        </span>
+                        <img class="project_image" src="piano_notes_1.png" alt=""> 
+                    </div>
+                    <div class="subsection">
+                        <img class="project_image" src="piano_notes_2.png" alt="">
+                        <span class="text">
+                            <div class="project_subtitle">
+                            Features & challenges:    
+                            </div>
+                                
+                                <br>
+                                
+                            The main screen of the PLAY section is built around a beautiful stock photo of the piano keyboard. Since this is a real picture (and not a drawing, which is what you see in most piano-related apps), there is real perspective to deal with. To give the key buttons the proper angle and positioning, I used CGAffineTransforms to get every key perfectly in position.
+                            <br>
+                            <pre class="prettyprint lang-swift">for angleMultiplier in (0...9) {
+                                positiveRotationTransforms.append(CGAffineTransform(rotationAngle: CGFloat(Double(angleMultiplier) * (angleIncrement))))
+                                
+                                negativeRotationTransforms.append(CGAffineTransform(rotationAngle: CGFloat(Double(angleMultiplier) * -(angleIncrement))))
+                            }</pre>
+                                    <!-- <code class="language-clike">let angleIncrement = 0.027
+                                            var positiveRotationTransforms = [CGAffineTransform]()
+                                            var negativeRotationTransforms = [CGAffineTransform]()
+                                            
+                                            // calculate rotation transforms
+                                            for angleMultiplier in (0...9) {
+                                                positiveRotationTransforms.append(CGAffineTransform(rotationAngle: CGFloat(Double(angleMultiplier) * (angleIncrement))))
+                                                negativeRotationTransforms.append(CGAffineTransform(rotationAngle: CGFloat(Double(angleMultiplier) * -(angleIncrement))))
+                                            }
+                                            
+                                            let translation1xPositive = CGAffineTransform(translationX: 10, y: 0)
+                                            let translation1xNegative = CGAffineTransform(translationX: -10, y: 0)
+                                            let translationTinyNegative = CGAffineTransform(translationX: -2.5, y: 0)
+                                            let translationTinyPositive = CGAffineTransform(translationX: 2.5, y: 0)
+                                            let translation2xPositive = CGAffineTransform(translationX: 20, y: 0)
+                                            let translation2xNegative = CGAffineTransform(translationX: -20, y: 0)</code> -->
+                                
+                        </span>
+                    </div>
+                    
+                        
+
+                        
+                </div>
+            </div>
+            <div class="project project2">
+
+            </div>
+            <div class="project project3">
+
+            </div>
+            <div class="project project4">
+
             </div>
         </div>
     </body>
