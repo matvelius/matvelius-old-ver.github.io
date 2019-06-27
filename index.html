@@ -25,10 +25,10 @@
         <div class="personal_info">
             <img src="Matvey Kostukovsky cropped.jpg" class="photo">
             <div class="contact_info">
-                <ul class="list">
-                    <li><a href="https://www.linkedin.com/in/matvey-kostukovsky/" target="_blank">LinkedIn</a></li>
-                    <li><a href="https://github.com/matvelius" target="_blank">Github</a></li>
-                    <li><a href="mailto:matveycodes@gmail.com">Email</a></li>
+                <ul class="contact_info_list">
+                    <li class="contact_info_list_item"><a href="https://www.linkedin.com/in/matvey-kostukovsky/" target="_blank">LinkedIn</a></li>
+                    <li class="contact_info_list_item"><a href="https://github.com/matvelius" target="_blank">Github</a></li>
+                    <li class="contact_info_list_item"><a href="mailto:matveycodes@gmail.com">Email</a></li>
                 </ul>
             </div>
         </div>
@@ -56,7 +56,7 @@
                             <br><br>
                             The PLAY section allows the students to practice their note-naming and note-finding skills in a game-like manner. The goal is to get the answers right consistently (just like a real piece of music would require) in order to earn points, stars, and pass levels.
                             <br><br>
-                            There is a FREEPLAY section designed for teachers, parents, and more advanced students who need to customize the training session. If you are just starting out, we recommend going through the levels first.
+                            There is a FREEPLAY section designed for teachers, parents, and more advanced students who need to customize the training session.
                         </span>
                         <img class="project_image" src="piano_notes_1.png" alt=""> 
                     </div>
@@ -84,6 +84,7 @@
                                 The note on staff moves up and down with a simple swiping/panning gesture with one finger. To add this functionality, I used the UIPanGestureRecognizer in combination with some basic, albeit slightly tricky algebra that calculates the current note to display by factoring in image height and finger position on the image view.
                                 <br><br>
                                 The last few weeks of the development process were mainly spent perfecting the logic of the multitude of options I decided to add to the settings menu. My goal was to enable students, teachers, and parents to set up the game to train for very specific goals, such as focusing on just the treble clef (or just the bass clef), or only practicing the sharps flats in a specific range.
+                                <br><br>Code on github: <a href="https://github.com/matvelius/Piano-Notes" target="_blank">https://github.com/matvelius/Piano-Notes</a>
                                 <br><br>
                                 <strong>Update: the Piano Notes Trainer app just got approved for the App Store! <br>Link coming soon.</strong>
                             </span>
@@ -96,12 +97,91 @@
                 </div>
             </div>
             <div class="project project2">
+                    <div class="project_title">
+                        Gemrover eBay Template & Website
+                    </div>
+                    <div class="project_subtitle">
+                        Pure HTML5 & CSS (Flexbox) + checkbox hack
+                    </div>
+                    <div class="project_description">
+    
+                        <div class="subsection">
+                            <span class="text">
+                                Gemrover is a jewelry & gemstone business located in the heart of the LA Diamond District. Their online business is growing, and I was hired to help create a template for their eBay listings.
+                                
+                                <br><br><div class="project_subtitle">
+                                Features & challenges:    
+                                </div><br>
+                                Creating a web page for eBay presents an interesting challege: scripts are strictly prohibited, so the page has to be made with pure HTML & CSS. Additionally, the page has the to live inside of an iFrame, which requires special treatment.
+                                <br><br>
+                                Initially I wanted to make sure the page still has an image gallery with clickable thumbnails. Javascript wasn't an option due to eBay's restrictions, so I used the checkbox / radio button hack as the workaround:
+                                <code class="language-css" id="code">#id1:checked ~ #image1
+                                    {
+                                        opacity: 1;
+                                        animation: gallery .5s linear;
+                                    }
+                                    </code>
+                                <br><br>
+                                
+                                Live version of the page can be seen here: <a href="https://bit.ly/2Yf6T3z" target="_blank">https://bit.ly/2Yf6T3z</a>
+                                <br><br>
+                                And here is the corresponding eBay posting: <a href="https://ebay.to/2IRYrSl" target="_blank">https://ebay.to/2IRYrSl</a> 
+                            </span>
+                            <img class="project_image" src="gemrover_ebay_2.png" alt=""> 
+                        </div>
+    
+                        <div class="subsection">
+
+                            <span class="text">
+                                Adding video to the page and making sure it would load on as many platforms and in as many browsers as possible was another interesting challenge - Safari (especially the iOS version) is pretty finicky when it comes to video formats.
+                                <br><br>
+                                I chose to use flexbox in combination with media queries to make the page responsive down to 300px-wide screen sizes.
+                                <br><br>
+                                Once the Gemrover team started to test and implement the template, we decided to create several versions of it for different types of products.
+                                <br><br>
+                                Here is an example of a variation that uses additional small images in place of a video: <a href="https://bit.ly/2Xde7bU" target="_blank">https://bit.ly/2Xde7bU</a> 
+                                <br><br>
+                                And here is a more minimalistic version for products that only have one image and video: <a href="https://bit.ly/2IW8PsB" target="_blank">https://bit.ly/2IW8PsB</a> 
+                                
+                            </span>
+
+                            <img class="project_image" src="gemrover_ebay_4.png" alt="">
+
+                            <img class="project_image" src="gemrover_ebay_3.png" alt="">
+                            
+                            
+                        </div>
+                        <br><br>
+                        <div class="project_subtitle">
+                            Website: Django, SQL Server, Docker
+                        </div>
+                        <br><br>
+                        <div class="subsection">
+
+                            <img class="project_image" src="gemrover_website_1.png" alt=""> 
+
+                            <span class="text">
+                                The next step is to create a full-blown website for the company. The company uses a somewhat outdated piece of software called White Diamonds Pro for their inventory, which works with a Microsoft SQL Server database, and my goal is to display these items on the website and eventually add functionality to enable online sales.
+                                <br><br>
+                                To start the process, the framework I chose for the task is Django, since I have experience with Python. Setting up SQL Server on a mac is not very common, and setting up the connection with Django wasn't trivial. I ended up using a Docker container for the database, and with the help of Kitematic, Azure Data Studio, and many hours spent reading the docs, I was able to make it work.
+                                <br><br>
+                                The Gemrover team is currently considering migrating to a more modern solution for the database, perhaps something that would be in the cloud. There are several ready-to-go frameworks & services available that cater directly to diamond, gemstone, and jewelry sales, and the main factors to consider are:
+                                <br><br>
+                                <ul class="simple_list">
+                                    <li>amount of time it would take to set up the new system</li>
+                                    <li>how much training the team would need to go through to complete the migration</li>
+                                    <li>costs of these 3rd-party services vs. cost of developing a custom-tailored system from scratch</li>
+                                    <li>integration with eBay, Rapnet, Amazon,and other online sales platforms</li>
+                                </ul>
+                            </span>
+                            
+                        </div>
+                    </div>
+                </div>
+            <!-- <div class="project project3">
 
             </div>
-            <div class="project project3">
-
-            </div>
-            <div class="project project4">
+            <div class="project project4"> -->
 
             </div>
         </div>
