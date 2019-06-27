@@ -11,10 +11,10 @@
             animation: fadein .8s;
 }
 
-/* @keyframes fadein {
+@keyframes fadein {
     from { opacity: 0; }
     to   { opacity: 1; }
-} */
+}
 
 html {
     font-size: 62.5%;
@@ -114,7 +114,7 @@ h3 {
     border-radius: 10px;
 }
 
-/* @keyframes moveright {
+@keyframes moveright {
 
     0%  { transform: translateX(-400px) scale(0.9);            
             opacity: 0; 
@@ -146,7 +146,7 @@ h3 {
             opacity: 1;
             border-radius: 45px;  
     }
-} */
+}
 
 .contact_info {
     margin-left: 2rem;
@@ -256,18 +256,21 @@ a:active {
 
 .subsection {
     display: flex;
-    justify-content: space-between;
+    align-items: flex-start;
     font-size: 1.7rem;
     text-align: left;
     padding: 2rem;
 }
 
 .text {
+    /* flex: 0 1 40%; */
     padding: 1rem;
     line-height: 2.5rem;
 }
 
 .project_image {
+    /* flex: 1 0 50%; */
+    width: 100%;
     margin: 1rem 2rem;
     border-radius: 3px;
     opacity: .95;
@@ -279,3 +282,16 @@ a:active {
     opacity: 1;
     transform: scale(1.01);
 }
+
+#code {
+    display: inline-block;
+    padding: 1rem;
+    margin: 1rem;
+    font-size: 1.1rem;
+}
+
+/* strong {
+    font-weight: 7;
+} */
+
+/* .tab { margin-left: 20px; } */

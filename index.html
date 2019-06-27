@@ -6,17 +6,17 @@
 
         <link rel="stylesheet" href="style.css">
 
-        <!-- <link rel="stylesheet" href="prism.css">
+        <link rel="stylesheet" href="prism.css">
         
-        <script src="prism.js"></script> -->
+        <script src="prism.js"></script>
 
-        <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+        <!-- <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
 
-        <script src="https://raw.githubusercontent.com/google/code-prettify/master/src/lang-swift.js"></script>
+        <script src="https://raw.githubusercontent.com/google/code-prettify/master/src/lang-swift.js"></script> -->
 
         <!-- <link rel="shortcut icon" type="image/png" href="https://gemrover.a2hosted.com/ebay/logo-icon.png"> -->
     
-        <link href="https://fonts.googleapis.com/css?family=Jura&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Jura:400,700&display=swap" rel="stylesheet">
     </header>
     <body>
         <h1>Matvey Kostukovsky</h1>
@@ -45,6 +45,7 @@
                     iOS: Swift/Xcode, AVFoundation; Sketch
                 </div>
                 <div class="project_description">
+
                     <div class="subsection">
                         <span class="text">
                             The Piano Notes Trainer app is designed to supplement piano lessons and help students learn to find and recognize notes on the piano as well as the musical staff. 
@@ -59,6 +60,7 @@
                         </span>
                         <img class="project_image" src="piano_notes_1.png" alt=""> 
                     </div>
+
                     <div class="subsection">
                         <img class="project_image" src="piano_notes_2.png" alt="">
                         <span class="text">
@@ -66,34 +68,27 @@
                             Features & challenges:    
                             </div>
                                 
-                                <br>
-                                
-                            The main screen of the PLAY section is built around a beautiful stock photo of the piano keyboard. Since this is a real picture (and not a drawing, which is what you see in most piano-related apps), there is real perspective to deal with. To give the key buttons the proper angle and positioning, I used CGAffineTransforms to get every key perfectly in position.
                             <br>
-                            <pre class="prettyprint lang-swift">for angleMultiplier in (0...9) {
-                                positiveRotationTransforms.append(CGAffineTransform(rotationAngle: CGFloat(Double(angleMultiplier) * (angleIncrement))))
-                                
-                                negativeRotationTransforms.append(CGAffineTransform(rotationAngle: CGFloat(Double(angleMultiplier) * -(angleIncrement))))
-                            }</pre>
-                                    <!-- <code class="language-clike">let angleIncrement = 0.027
-                                            var positiveRotationTransforms = [CGAffineTransform]()
-                                            var negativeRotationTransforms = [CGAffineTransform]()
-                                            
-                                            // calculate rotation transforms
-                                            for angleMultiplier in (0...9) {
-                                                positiveRotationTransforms.append(CGAffineTransform(rotationAngle: CGFloat(Double(angleMultiplier) * (angleIncrement))))
-                                                negativeRotationTransforms.append(CGAffineTransform(rotationAngle: CGFloat(Double(angleMultiplier) * -(angleIncrement))))
-                                            }
-                                            
-                                            let translation1xPositive = CGAffineTransform(translationX: 10, y: 0)
-                                            let translation1xNegative = CGAffineTransform(translationX: -10, y: 0)
-                                            let translationTinyNegative = CGAffineTransform(translationX: -2.5, y: 0)
-                                            let translationTinyPositive = CGAffineTransform(translationX: 2.5, y: 0)
-                                            let translation2xPositive = CGAffineTransform(translationX: 20, y: 0)
-                                            let translation2xNegative = CGAffineTransform(translationX: -20, y: 0)</code> -->
-                                
+                            My goal was to make the piano look as realistic as possible. The main screen of the PLAY section is built around a beautiful stock photo of the piano keyboard. Since this is not a drawing, which is what you see in most piano-related apps, there is real perspective to deal with. To give the key buttons the proper angle and positioning, I used CGAffineTransforms (mainly rotation and scaling) to get every key perfectly in place. This results in some lengthy chained statements:
+                            <br>
+                            <code class="language-swift" id="code">positiveRotationTransforms.append(CGAffineTransform(rotationAngle:CGFloat(angleMult * angleInc)))
+                            </code>
+                            The biggest challenge, though, turned out to be game logic, as music theory itself presents some interesting problems to solve. It took some time to figure out how to deal with enharmonic equivalents (e.g. F# & Gb), especially when octave changes are involved (e.g. B#3 == C4). I also decided to use two versions of the middle C, as well as C#  Cb, to help students deal with the confusion of switching clefs.  
                         </span>
                     </div>
+
+                    <div class="subsection">
+                            <span class="text">
+                                For game levels that are designed around the musical staff I had to use a different image in order to display a bigger range.
+                                <br><br>
+                                The note on staff moves up and down with a simple swiping/panning gesture with one finger. To add this functionality, I used the UIPanGestureRecognizer in combination with some basic, albeit slightly tricky algebra that calculates the current note to display by factoring in image height and finger position on the image view.
+                                <br><br>
+                                The last few weeks of the development process were mainly spent perfecting the logic of the multitude of options I decided to add to the settings menu. My goal was to enable students, teachers, and parents to set up the game to train for very specific goals, such as focusing on just the treble clef (or just the bass clef), or only practicing the sharps flats in a specific range.
+                                <br><br>
+                                <strong>Update: the Piano Notes Trainer app just got approved for the App Store! <br>Link coming soon.</strong>
+                            </span>
+                            <img class="project_image" src="piano_notes_3.png" alt=""> 
+                        </div>
                     
                         
 
