@@ -16,6 +16,41 @@
     to   { opacity: 1; }
 }
 
+@keyframes moveright {
+
+    0%  { transform: translateX(-400px) scale(0.9);            
+            opacity: 0; 
+            border-radius: 0px; }
+
+    70% { transform: translateX(-400px) scale(0.95) ;            
+            opacity: 0;
+            border-radius: 0px;
+    }
+
+    100%{ transform: translateX(0) scale(1);                
+            opacity: 0.85;
+            border-radius: 15px;  
+    }
+}
+
+@keyframes moveleft {
+
+    0%  { transform: translateX(400px) scale(0.8);            
+            opacity: 0; 
+            border-radius: 0px; }
+
+    80% { transform: translateX(400px) scale(0.9) ;            
+            opacity: 0;
+            border-radius: 0px;
+    }
+
+    100%{ transform: translateX(0) scale(1);                
+            opacity: 1;
+            border-radius: 45px;  
+    }
+}
+
+
 html {
     font-size: 62.5%;
     background-color: rgb(247, 247, 247);
@@ -107,40 +142,6 @@ h3 {
     transform: scale(1.01);
     box-shadow: .2rem .2rem .5rem rgba(0, 0, 0, 0.95);
     border-radius: 10px;
-}
-
-@keyframes moveright {
-
-    0%  { transform: translateX(-400px) scale(0.9);            
-            opacity: 0; 
-            border-radius: 0px; }
-
-    70% { transform: translateX(-400px) scale(0.95) ;            
-            opacity: 0;
-            border-radius: 0px;
-    }
-
-    100%{ transform: translateX(0) scale(1);                
-            opacity: 0.85;
-            border-radius: 15px;  
-    }
-}
-
-@keyframes moveleft {
-
-    0%  { transform: translateX(400px) scale(0.8);            
-            opacity: 0; 
-            border-radius: 0px; }
-
-    80% { transform: translateX(400px) scale(0.9) ;            
-            opacity: 0;
-            border-radius: 0px;
-    }
-
-    100%{ transform: translateX(0) scale(1);                
-            opacity: 1;
-            border-radius: 45px;  
-    }
 }
 
 .contact_info {
@@ -250,6 +251,8 @@ a:active {
 
 .subsection {
     display: flex;
+    justify-content: space-between;
+    /* flex-wrap: wrap; */
     align-items: flex-start;
     font-size: 1.7rem;
     text-align: left;
@@ -257,15 +260,19 @@ a:active {
 }
 
 .text {
-    /* flex: 0 1 40%; */
+    flex: 1 1 55%;
+    /* width: 58%; */
     padding: 1rem;
     line-height: 2.5rem;
 }
 
 .project_image {
-    /* flex: 1 0 50%; */
+    flex: 1 1 20%;
+    max-width: 500px;
     width: 100%;
-    object-fit: contain;
+    /* width: 38%; */
+    /* dispay: block; */
+    /* object-fit: contain; */
     margin: 1rem 2rem;
     border-radius: 3px;
     opacity: .95;
