@@ -240,25 +240,25 @@ return jsonify(places)
                             <pre><code class="language-py" id="code_no_padding_or_margin">
 marker.addListener('click', function(event) {
 
-        showInfo(marker, null, event);
+    showInfo(marker, null, event);
 
-        $.getJSON(Url, function(data) {
+    $.getJSON(Url, function(data) {
 
-            // info.open(map, marker);
-            contentString = "<ul>"
+        // info.open(map, marker);
+        contentString = "<ul>"
 
-            for (let i = 0; i < 5; i++) {
-                articleLink = data[0][i]["link"]
-                articleTitle = data[0][i]["title"]
-                contentString += `<li><a href="${articleLink}">${articleTitle}</a></li>`
-            }
+        for (let i = 0; i < 5; i++) {
+            articleLink = data[0][i]["link"]
+            articleTitle = data[0][i]["title"]
+            contentString += `<li><a href="${articleLink}">${articleTitle}</a></li>`
+        }
 
-            contentString += "</ul>"
+        contentString += "</ul>"
 
-            showInfo(marker, contentString, event);
-        });
+        showInfo(marker, contentString, event);
+    });
 
-    });                      </code></pre>
+});                      </code></pre>
 
                             
                             <!-- <img class="project_image" src="google_maps_3.png" alt="">  -->
