@@ -21,9 +21,11 @@
         <link href="https://fonts.googleapis.com/css?family=Jura:400,700&display=swap" rel="stylesheet">
     </header>
     <body>
+
         <h1>Matvey Kostukovsky</h1>
         <h2>Software engineer</h2>
         <h3>Expertise: Swift/Xcode, Python, Django, C, HTML, CSS & SCSS, SQL</h3>
+
         <div class="personal_info">
             <img src="Matvey Kostukovsky cropped.jpg" class="photo">
             <div class="contact_info">
@@ -81,24 +83,22 @@
                     </div>
 
                     <div class="subsection">
-                            <span class="text">
-                                For game levels that are designed around the musical staff I had to use a different image in order to display a bigger range.
-                                <br><br>
-                                The note on staff moves up and down with a simple swiping/panning gesture with one finger. To add this functionality, I used the UIPanGestureRecognizer in combination with some basic, albeit slightly tricky algebra that calculates the current note to display by factoring in image height and finger position on the image view.
-                                <br><br>
-                                The last few weeks of the development process were mainly spent perfecting the logic of the multitude of options I decided to add to the settings menu. My goal was to enable students, teachers, and parents to set up the game to train for very specific goals, such as focusing on just the treble clef (or just the bass clef), or only practicing the sharps flats in a specific range.
-                                <br><br>Code on github: <a href="https://github.com/matvelius/Piano-Notes" target="_blank">https://github.com/matvelius/Piano-Notes</a>
-                                <br><br>
-                                <strong>Update: the Piano Notes Trainer app just got approved for the App Store! <br></strong><a href="https://apple.co/2NeIkm6" target="_blank">https://apple.co/2NeIkm6</a>
-                            </span>
-                            <img class="project_image" src="piano_notes_3.png" alt=""> 
-                        </div>
-                    
-                        
-
-                        
+                        <span class="text">
+                            For game levels that are designed around the musical staff I had to use a different image in order to display a bigger range.
+                            <br><br>
+                            The note on staff moves up and down with a simple swiping/panning gesture with one finger. To add this functionality, I used the UIPanGestureRecognizer in combination with some basic, albeit slightly tricky algebra that calculates the current note to display by factoring in image height and finger position on the image view.
+                            <br><br>
+                            The last few weeks of the development process were mainly spent perfecting the logic of the multitude of options I decided to add to the settings menu. My goal was to enable students, teachers, and parents to set up the game to train for very specific goals, such as focusing on just the treble clef (or just the bass clef), or only practicing the sharps flats in a specific range.
+                            <br><br>Code on github: <a href="https://github.com/matvelius/Piano-Notes" target="_blank">https://github.com/matvelius/Piano-Notes</a>
+                            <br><br>
+                            <strong>Update: the Piano Notes Trainer app just got approved for the App Store! <br></strong><a href="https://apple.co/2NeIkm6" target="_blank">https://apple.co/2NeIkm6</a>
+                        </span>
+                        <img class="project_image" src="piano_notes_3.png" alt=""> 
+                    </div>
+                  
                 </div>
             </div>
+
             <div class="project project2">
                     <div class="project_title">
                         Gemrover eBay Template & Website
@@ -124,8 +124,7 @@
                                         animation: gallery .5s linear;
                                     }
                                     </code>
-                                <br><br>
-                                
+                                <br>
                                 Live version of the page can be seen here: <a href="https://bit.ly/2Yf6T3z" target="_blank">https://bit.ly/2Yf6T3z</a>
                                 <br><br>
                                 And here is the corresponding eBay posting: <a href="https://ebay.to/2IRYrSl" target="_blank">https://ebay.to/2IRYrSl</a> 
@@ -180,13 +179,96 @@
                             
                         </div>
                     </div>
-                </div>
-            <!-- <div class="project project3">
-
             </div>
-            <div class="project project4"> -->
 
+            <div class="project project2">
+                    <div class="project_title">
+                        Mashup: Local News Articles on Google Maps
+                    </div>
+                    <div class="project_subtitle">
+                        Google Maps API, Python & Flask, AJAX & jQuery, HTML & CSS, SQLite 3
+                    </div>
+                    <div class="project_description">
+    
+                        <div class="subsection">
+                            <span class="text">
+                                This was the last project in Harvard's CS50, and one of my favorites to work on. It involves a combination of a bunch of technologies, hence the name.
+                                The idea is to allow the user to enter a location by name or zip code and display news articles atop Google maps.
+                                <br><br>
+                                <div class="project_subtitle">
+                                Features & challenges:    
+                                </div><br>
+                                The first step was to learn about the Google Maps API as well Google News. Thankfully the official docs are well-written and easy to understand. For instance, looking up news can be as simple as generating a URL such as: <a href="https://news.google.com/news/rss/local/section/geo/02138" target="_blank">https://news.google.com/news/rss/local/section/geo/02138</a>
+                                <br><br>
+                                Using the Google Maps JavaScript API is also fairly straightforward. For example, to initialize a map, you simply configure the way the canvas looks and set up some options (like where the map is centered, zoom settings, etc.) and then run: 
+                                <br>
+                                <code class="language-js" id="code">map = new google.maps.Map(canvas, options);
+                                </code>
+     
+                            </span>
+                            <img class="project_image" src="google_maps_1.png" alt=""> 
+                        </div>
+    
+                        <div class="subsection">
+                            <img class="project_image" src="google_maps_2.png" alt="">
+                            <span class="text">
+                                In order to make the form dynamic (which is what most users expect nowadays), we used Twitter’s typeahead.js library. It returns search results asynchronously as the user begins to type a zip code or location name.
+                                <br><br>
+                                As a starting point, we were given a text file with U.S. city, state, and zip code information, delimited with a tab character (\t), similar to the .csv format. I imported this into the SQLite database to allow fast lookup, and used Python & Flask to query it:
+                                <pre><code class="language-py" id="code_no_padding_or_margin">
+q = request.args.get("q") + "*"
+places = db.execute('''SELECT * FROM virt_table WHERE virt_table MATCH :q''', q=q)
+return jsonify(places)
+                                </code></pre>
+                                
+                            </span>
+
+                            
+                        </div>
+                        <br><br>
+                        
+                        <div class="subsection">
+                            <span class="text">
+                                Once the user chooses a location, the map is updated with markers. The user can move around on the map and zoom in and out, and the markers are updated accordingly. The addMarker() function chooses a point on the map based on latitude and longitude found in the database.
+                                <br><br> The script sends a GET request via the /update route, after which the backend (Flask) queries the database and returns the data in a JSON format via the jsonify function. The update() function determines the current bounds of the map based on the current northeast and southwest coordinates in order to return only the results within the current view.
+                                <br><br>
+                                Each marker has an event listener which waits for a user to select it. Once clicked, a marker displays the top 5 articles of the local news. The article data is displayed using HandlebarsJS, a templating language for JavaScript. <br><br>There is a built-in fallback on Onion articles if no "real" news articles are available for that particular location (which explains some of the strange article titles that show up :).
+                                <br><br>
+                                
+                            </span>
+
+                            <pre><code class="language-py" id="code_no_padding_or_margin">
+marker.addListener('click', function(event) {
+
+        showInfo(marker, null, event);
+
+        $.getJSON(Url, function(data) {
+
+            // info.open(map, marker);
+            contentString = "<ul>"
+
+            for (let i = 0; i < 5; i++) {
+                articleLink = data[0][i]["link"]
+                articleTitle = data[0][i]["title"]
+                contentString += `<li><a href="${articleLink}">${articleTitle}</a></li>`
+            }
+
+            contentString += "</ul>"
+
+            showInfo(marker, contentString, event);
+        });
+
+    });                      </code></pre>
+
+                            
+                            <!-- <img class="project_image" src="google_maps_3.png" alt="">  -->
+
+                            
+                            
+                        </pre>
+                    </div>
             </div>
+
         </div>
     </body>
 </html>

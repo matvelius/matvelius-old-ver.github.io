@@ -231,8 +231,8 @@ a:active {
     flex-direction: column;
     background-color: rgb(241, 241, 241);
     box-shadow: .5rem .5rem 1rem rgba(0, 0, 0, 0.15);
-    padding: 2rem;
-    margin: 3rem;
+    padding: 2rem 2rem 5rem 2rem;
+    margin: 3rem 3rem 7rem 3rem;
 }
 
 .project_title {
@@ -291,6 +291,12 @@ a:active {
     padding: 1rem;
     margin: 1rem;
     font-size: 1.1rem;
+}
+
+#code_no_padding_or_margin {
+    /* display: inline-block; */
+    font-size: 1.3rem;
+    width: 200px;
 }
 
 .simple_list {
