@@ -8,6 +8,8 @@
 
         <link rel="stylesheet" href="style.css">
 
+        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+
         <link rel="stylesheet" href="prism.css">
         
         <script src="prism.js"></script>
@@ -24,7 +26,7 @@
 
         <h1>Matvey Kostukovsky</h1>
         <h2>Software engineer</h2>
-        <h3>Expertise: Swift/Xcode, Python, Django, C, HTML, CSS & SCSS, SQL</h3>
+        <h3>Expertise: Swift/Xcode, Python, Django, C, HTML, CSS & SASS, SQL</h3>
 
         <div class="personal_info">
             <img src="Matvey Kostukovsky cropped.jpg" class="photo">
@@ -181,94 +183,186 @@
                     </div>
             </div>
 
-            <div class="project project2">
-                    <div class="project_title">
-                        Mashup: Local News Articles on Google Maps
-                    </div>
-                    <div class="project_subtitle">
-                        Google Maps API, Python & Flask, AJAX & jQuery, HTML & CSS, SQLite 3
-                    </div>
-                    <div class="project_description">
+            <div class="project project3">
+                <div class="project_title">
+                    Mashup: Local News Articles on Google Maps
+                </div>
+                <div class="project_subtitle">
+                    Google Maps API, Python & Flask, AJAX & jQuery, HTML & CSS, SQLite 3
+                </div>
+                <div class="project_description">
+
+                    <div class="subsection">
+                        <span class="text">
+                            This was the last project in Harvard's CS50, and one of my favorites to work on. It involves a combination of a bunch of technologies, hence the name.
+                            The idea is to allow the user to enter a location by name or zip code and display news articles atop Google maps.
+                            <br><br>
+                            <div class="project_subtitle">
+                            Features & challenges:    
+                            </div><br>
+                            The first step was to learn about the Google Maps API as well Google News. Thankfully the official docs are well-written and easy to understand. For instance, looking up news can be as simple as generating a URL such as: <a href="https://news.google.com/news/rss/local/section/geo/02138" target="_blank">https://news.google.com/news/rss/local/section/geo/02138</a>
+                            <br><br>
+                            Using the Google Maps JavaScript API is also fairly straightforward. For example, to initialize a map, you simply configure the way the canvas looks and set up some options (like where the map is centered, zoom settings, etc.) and then run: 
+                            <br>
+                            <code class="language-js" id="code">map = new google.maps.Map(canvas, options);
+                            </code>
     
-                        <div class="subsection">
-                            <span class="text">
-                                This was the last project in Harvard's CS50, and one of my favorites to work on. It involves a combination of a bunch of technologies, hence the name.
-                                The idea is to allow the user to enter a location by name or zip code and display news articles atop Google maps.
-                                <br><br>
-                                <div class="project_subtitle">
-                                Features & challenges:    
-                                </div><br>
-                                The first step was to learn about the Google Maps API as well Google News. Thankfully the official docs are well-written and easy to understand. For instance, looking up news can be as simple as generating a URL such as: <a href="https://news.google.com/news/rss/local/section/geo/02138" target="_blank">https://news.google.com/news/rss/local/section/geo/02138</a>
-                                <br><br>
-                                Using the Google Maps JavaScript API is also fairly straightforward. For example, to initialize a map, you simply configure the way the canvas looks and set up some options (like where the map is centered, zoom settings, etc.) and then run: 
-                                <br>
-                                <code class="language-js" id="code">map = new google.maps.Map(canvas, options);
-                                </code>
-     
-                            </span>
-                            <img class="project_image" src="google_maps_1.png" alt=""> 
-                        </div>
-    
-                        <div class="subsection">
-                            <img class="project_image" src="google_maps_2.png" alt="">
-                            <span class="text">
-                                In order to make the form dynamic (which is what most users expect nowadays), we used Twitter’s typeahead.js library. It returns search results asynchronously as the user begins to type a zip code or location name.
-                                <br><br>
-                                As a starting point, we were given a text file with U.S. city, state, and zip code information, delimited with a tab character (\t), similar to the .csv format. I imported this into the SQLite database to allow fast lookup, and used Python & Flask to query it:
-                                <pre><code class="language-py" id="code_no_padding_or_margin">
+                        </span>
+                        <img class="project_image" src="google_maps_1.png" alt=""> 
+                    </div>
+
+                    <div class="subsection">
+                        <img class="project_image" src="google_maps_2.png" alt="">
+                        <span class="text">
+                            In order to make the form dynamic (which is what most users expect nowadays), we used Twitter’s typeahead.js library. It returns search results asynchronously as the user begins to type a zip code or location name.
+                            <br><br>
+                            As a starting point, we were given a text file with U.S. city, state, and zip code information, delimited with a tab character (\t), similar to the .csv format. I imported this into the SQLite database to allow fast lookup, and used Python & Flask to query it:
+                            <pre><code class="language-py" id="code_no_padding_or_margin">
 q = request.args.get("q") + "*"
 places = db.execute('''SELECT * FROM virt_table WHERE virt_table MATCH :q''', q=q)
 return jsonify(places)
-                                </code></pre>
-                                
-                            </span>
-
+                            </code></pre>
                             
-                        </div>
-                        <br><br>
-                        
-                        <div class="subsection">
-                            <span class="text">
-                                Once the user chooses a location, the map is updated with markers. The user can move around on the map and zoom in and out, and the markers are updated accordingly. The addMarker() function chooses a point on the map based on latitude and longitude found in the database.
-                                <br><br> The script sends a GET request via the /update route, after which the backend (Flask) queries the database and returns the data in a JSON format via the jsonify function. The update() function determines the current bounds of the map based on the current northeast and southwest coordinates in order to return only the results within the current view.
-                                <br><br>
-                                Each marker has an event listener which waits for a user to select it. Once clicked, a marker displays the top 5 articles of the local news. The article data is displayed using HandlebarsJS, a templating language for JavaScript. <br><br>There is a built-in fallback on Onion articles if no "real" news articles are available for that particular location (which explains some of the strange article titles that show up :).
-                                <br><br>
-                                
-                            </span>
+                        </span>
 
-                            <pre><code class="language-py" id="code_no_padding_or_margin">
+                        
+                    </div>
+                    <br><br>
+                    
+                    <div class="subsection">
+                        <span class="text">
+                            Once the user chooses a location, the map is updated with markers. The user can move around on the map and zoom in and out, and the markers are updated accordingly. The addMarker() function chooses a point on the map based on latitude and longitude found in the database.
+                            <br><br> The script sends a GET request via the /update route, after which the backend (Flask) queries the database and returns the data in a JSON format via the jsonify function. The update() function determines the current bounds of the map based on the current northeast and southwest coordinates in order to return only the results within the current view.
+                            <br><br>
+                            Each marker has an event listener which waits for a user to select it. Once clicked, a marker displays the top 5 articles of the local news. The article data is displayed using HandlebarsJS, a templating language for JavaScript. <br><br>There is a built-in fallback on Onion articles if no "real" news articles are available for that particular location (which explains some of the strange article titles that show up :).
+                            <br><br>
+                            
+                        </span>
+
+                        <pre><code class="language-py" id="code_no_padding_or_margin">
 marker.addListener('click', function(event) {
 
-    showInfo(marker, null, event);
+showInfo(marker, null, event);
 
-    $.getJSON(Url, function(data) {
+$.getJSON(Url, function(data) {
 
-        // info.open(map, marker);
-        contentString = "<ul>"
+    // info.open(map, marker);
+    contentString = "<ul>"
 
-        for (let i = 0; i < 5; i++) {
-            articleLink = data[0][i]["link"]
-            articleTitle = data[0][i]["title"]
-            contentString += `<li><a href="${articleLink}">${articleTitle}</a></li>`
-        }
+    for (let i = 0; i < 5; i++) {
+        articleLink = data[0][i]["link"]
+        articleTitle = data[0][i]["title"]
+        contentString += `<li><a href="${articleLink}">${articleTitle}</a></li>`
+    }
 
-        contentString += "</ul>"
+    contentString += "</ul>"
 
-        showInfo(marker, contentString, event);
-    });
+    showInfo(marker, contentString, event);
+});
 
 });                      </code></pre>
 
-                            
-                            <!-- <img class="project_image" src="google_maps_3.png" alt="">  -->
+                        
 
+            </div>
+
+                </div>
+            </div>
+
+            <div class="project project4">
+                <div class="project_title">
+                    Finance: Stock Quotes & Trading
+                </div>
+                <div class="project_subtitle">
+                    IEX Trading API, Python & Flask, SQLite 3 & phpLiteAdmin
+                </div>
+                <div class="project_description">
+
+                    <div class="subsection">
+                        <span class="text">
+                            Another project from Harvard's CS50, this application allows the user to create an account, get real-time stock quotes, and simulate buying and selling stocks. The app is very generous: every new user gets $10,000 to play with!
+                            <br><br>
+                            <div class="project_subtitle">
+                            Features & challenges:    
+                            </div><br>
+                            When a new user registers, we first check to see if the username is already taken:
+                            <pre><code class="language-py" id="code_no_padding_or_margin">rows = db.execute("SELECT * FROM users WHERE username = :username", username=request.form.get("username"))
+if len(rows) == 1:
+    if rows[0]['username'] == request.form.get("username"):
+        return apology("this username is already taken", 400)</code></pre>
                             
-                            
-                        </pre>
+                            Once the user input is validated, the password is hashed and the new user is added to the database:
+                            <br>
+<pre><code class="language-py" id="code_no_padding_or_margin">hash = generate_password_hash(request.form.get("password"))
+
+session["user_id"] = db.execute("INSERT INTO users (username, hash) VALUES (:username, :hash)",
+username=request.form.get("username"), hash=hash)</code></pre>
+    
+                        </span>
+                        <img class="project_image" src="finance_1.png" alt=""> 
                     </div>
+
+                    <div class="subsection">
+                        <img class="project_image" src="finance_2.png" alt="">
+                        <span class="text">
+                            Once logged in, the user is presented with a list of the stocks he/she owns and the total balance based on current stock prices and amount of cash in the account. Financial data is stored as a series of transactions in the database, which is retrieved as follows: 
+                            <pre><code class="language-py" id="code_no_padding_or_margin">stocks_owned = db.execute("SELECT transactions.symbol, SUM(transactions.shares) AS 
+    shares FROM transactions WHERE user_id=:id GROUP BY transactions.symbol",
+    id=session["user_id"])
+
+    for index, stock in enumerate(stocks_owned):
+        this_stock_info = lookup(stock['symbol'])
+        stocks_owned[index]['name'] = this_stock_info['name']
+        stocks_owned[index]['price'] = usd(this_stock_info['price'])
+        stocks_owned[index]['total'] = usd(this_stock_info['price'] * stock['shares'])
+        total_value += this_stock_info['price'] * stock['shares']</code></pre>
+                            
+                            In order to get a quote for or trade a specific stock, we make a call to the IEX Trading API using Python's requests and urllib.parse libraries and a URL like this: "https://cloud.iexapis.com/stable/stock/{urllib.parse.quote_plus(symbol)}/quote?token={myToken}" 
+                            
+                        </span>
+
+                        
+                    </div>
+                    <br><br>
+                    
+                    <div class="subsection">
+                        <span class="text">
+                            All errors, such as invalid logins, misspelled stock symbols, and insufficient funds, are handled in the most professional and user-friendly manner possible -- with the use of the grumpy cat meme, of course.
+                            <br><br>
+                            We define the errorhandler method, which takes in the "e" parameter (for "error").  
+                            <pre><code class="language-py" id="code_no_padding_or_margin">def errorhandler(e):
+    """Handle error"""
+    return apology(e.name, e.code)</code></pre>
+ 
+                            Errorhandler calls the apology method, which generates the apology.html page using a call to http://memegen.link/ with the appropriate top and bottom strings.<pre><code class="language-py" id="code_no_padding_or_margin">def apology(message, code=400):
+    def escape(s):
+        """Escape special characters: https://github.com/jacebrowning/memegen#special-characters"""
+        for old, new in [("-", "--"), (" ", "-"), ("_", "__"), ("?", "~q"),
+                         ("%", "~p"), ("#", "~h"), ("/", "~s"), ("\"", "''")]:
+            s = s.replace(old, new)
+        return s
+    return render_template("apology.html", top=code, bottom=escape(message)), code</code></pre>
+                            <br>
+                            Other functionality of the Finance website includes transaction history and a user settings page where the user can change his or her password.
+                        </span>
+                    </span>
+
+                    <img class="project_image" src="finance_3.png" alt=""> 
+                    </div>
+                        
+
+            </div>
+
+                </div>
             </div>
 
         </div>
+
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>     -->
+
+
     </body>
+
 </html>
