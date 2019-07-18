@@ -210,7 +210,10 @@ a:active {
     animation-timing-function: cubic-bezier(.46,.09,.85,-0.19);
 }
 
-.projects_section {
+.project1,
+.project2,
+.project4,
+.project5 {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
